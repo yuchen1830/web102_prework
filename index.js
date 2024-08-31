@@ -162,8 +162,8 @@ let numOfUnfundedGames = unfundedGames.length;
 
 // create a string that explains the number of unfunded games using the ternary operator
 const unfundedMsg = numOfUnfundedGames === 1 ? "1 game remains unfunded." 
-    : "${numOfUnfundedGames} games remain unfunded.";
-const displayStr = `A total of ${totalPledged} has been raised across ${GAMES_JSON.length} games.`;
+    : `${numOfUnfundedGames} games remain unfunded.`;
+const displayStr = `A total of ${totalPledged} has been raised across ${GAMES_JSON.length} games. ${unfundedMsg}`;
 
 // create a new DOM element containing the template string and append it to the description container
 const newParagraph = document.createElement('p');
@@ -187,8 +187,11 @@ console.log(firstGame);
 console.log(secondGame);
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 const topPledge = document.createElement('p');
+topPledge.textContent = `${firstGame.name}: $${firstGame.pledged.toLocaleString()} pledged`; 
 firstGameContainer.appendChild(topPledge);
+
 const secondPledge = document.createElement('p');
+secondPledge.textContent = `${secondGame.name}: $${secondGame.pledged.toLocaleString()} pledged`;
 secondGameContainer.appendChild(secondPledge);
 
 
